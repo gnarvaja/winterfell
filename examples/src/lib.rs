@@ -20,6 +20,7 @@ pub mod rescue;
 pub mod rescue_raps;
 pub mod utils;
 pub mod vdf;
+pub mod padovan;
 
 #[cfg(test)]
 mod tests;
@@ -152,6 +153,12 @@ pub enum ExampleType {
     FibSmall {
         /// Length of Fibonacci sequence; must be a power of two
         #[structopt(short = "n", default_value = "65536")]
+        sequence_length: usize,
+    },
+    /// Compute a Padovan sequence using trace table with 3 registers
+    Pado {
+        /// Length of Padovan sequence; must be a power of two multiplied by 3
+        #[structopt(short = "n", default_value = "1572864")]
         sequence_length: usize,
     },
     /// Execute a simple VDF function

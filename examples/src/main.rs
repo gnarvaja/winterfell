@@ -9,7 +9,7 @@ use std::time::Instant;
 use structopt::StructOpt;
 use winterfell::StarkProof;
 
-use examples::{fibonacci, rescue, vdf, ExampleOptions, ExampleType};
+use examples::{fibonacci, padovan, rescue, vdf, ExampleOptions, ExampleType};
 #[cfg(feature = "std")]
 use examples::{lamport, merkle, rescue_raps};
 
@@ -44,6 +44,9 @@ fn main() {
         }
         ExampleType::FibSmall { sequence_length } => {
             fibonacci::fib_small::get_example(&options, sequence_length)
+        }
+        ExampleType::Pado { sequence_length } => {
+            padovan::pado::get_example(&options, sequence_length)
         }
         ExampleType::Vdf { num_steps } => vdf::regular::get_example(&options, num_steps),
         ExampleType::VdfExempt { num_steps } => vdf::exempt::get_example(&options, num_steps),
